@@ -1,12 +1,15 @@
 import React from 'react';
 
 
-const NotFound = () => {
+const NotFound = (props) => {
 
-    return (
-        <div>
-            <img src="images/No-Results-Layout.png" alt="Page not found image"/>
-        </div>
+      return (
+        
+            <li className="not-found">
+              <h3>No Results Found</h3>
+              <p>You search did not return any results. Please try again.</p>
+            </li>
+            
 
     )
 

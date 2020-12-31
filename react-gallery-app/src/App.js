@@ -1,43 +1,73 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './App.css';
 import {
   BrowserRouter,
   // Route,
   // Switch
 } from 'react-router-dom';
+import axios from 'axios';
+
 
 //App components
 
 import SearchForm from './Components/SearchForm';
 import Nav from './Components/Nav';
-import './App.css';
 import PhotoContainer from './Components/PhotoContainer';
 import apiKey from './config';
 
-function App() {
+
+export default class App extends Component {
   
+  constructor(){
   //state
+    super();
+    this.state = {
+      photos: []
+    };
+  }
 
-  //axios
+  
+  componentDidMount() {
+    this.performSearch();
+  }
+
   
   
-  
-  return (
-   <BrowserRouter>
-      
-    <body>  
-      <div className="container">
+  //Can be set to default
+  performSearch = (query) => {
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=${apiKey.MY_KEY}&per_page=10&format=json&nojsoncallback=1`)
+    .then(response =>{
+      this.setState({
+        photos: response.data
+        
+      })
+    })
+    .catch((error) => {
+      console.log('Error fetching and parsing data', error)
+    });
+  }
+
+        
+
+    render () {
+
+      return (
+        <BrowserRouter>
           
-          <SearchForm />
-
-          <Nav />
-
-          <PhotoContainer />
-
-        </div>
-      </body>
+          
+          <div className="container">
+              
+              <SearchForm onSearch={this.performSearch}/>
     
-   </BrowserRouter>
-  );
+              <Nav />
+    
+              <PhotoContainer data={this.state.photos}/>
+    
+            </div>
+        
+        </BrowserRouter>
+      );
+    }
+    
 }
 
-export default App;
