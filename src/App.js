@@ -37,6 +37,7 @@ export default class App extends Component {
   performSearch = (query) => {
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=${apiKey.MY_KEY}&per_page=10&format=json&nojsoncallback=1`)
     .then(response =>{
+      console.log(response.data);
       this.setState({
         photos: response.data
         
