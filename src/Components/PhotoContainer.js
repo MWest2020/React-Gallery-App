@@ -17,10 +17,11 @@ const PhotoContainer = (props) => {
                     key={photo.id.toString()}
                 /> 
             );
-        } else {
+        } else  if(results.length ===  undefined){
                     photos = <NotFound />
         }
-    
+        
+       
     return  (
 
         <div className="photo-container">
@@ -30,6 +31,7 @@ const PhotoContainer = (props) => {
               </ul>
         </div>
     );
+    
 } 
 
 

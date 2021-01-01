@@ -16,7 +16,7 @@ class SearchForm extends Component {
     const {history} = this.props;
     history.push(query);
     this.props.onSearch(query);
-    this.props.onSearch(this.query.value)
+    
     e.currentTarget.reset();
   }
   
@@ -30,7 +30,7 @@ class SearchForm extends Component {
                     onChange={this.onSearchChange}
                     name="search" 
                     placeholder="Search" 
-                    ref={ input => this.query = input}
+                    ref={ (input) => this.query = input}
                     required/>
             <button type="submit" className="search-button">
               <svg fill="#fff" height="24" viewBox="0 0 23 23" width="24" xmlns="http://www.w3.org/2000/svg">

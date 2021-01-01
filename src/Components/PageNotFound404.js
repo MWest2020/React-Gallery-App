@@ -1,13 +1,13 @@
 import React from 'react';
 
 
-const NotFound = () => {
+const PageNotFound404 = () => {
 
       return (
         
             <li className="not-found">
               <h3>No Results Found</h3>
-              <p>Your search did not return any results. Please try again.</p>
+              <p>Page does not exist.</p>
             </li>
             
 
@@ -15,4 +15,4 @@ const NotFound = () => {
 
 }
 
-export default NotFound;
+export default PageNotFound404;
