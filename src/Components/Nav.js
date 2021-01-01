@@ -1,9 +1,6 @@
 import React from 'react';
 import { NavLink} from 'react-router-dom';
 
-//Components
-// import Cats from '..react-gallery-app/src/Components/Catgories/Cats.js';
-
 const Nav = () => {
 
     return(
