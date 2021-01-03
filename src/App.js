@@ -16,7 +16,7 @@ import SearchForm from './Components/SearchForm';
 import Nav from './Components/Nav';
 import PhotoContainer from './Components/PhotoContainer';
 import NotFound from './Components/NotFound';
-import PageNotFound from './Components/NotFound';
+// import PageNotFound from './Components/NotFound';
 import apiKey from './config';
 
 
@@ -29,7 +29,8 @@ export default class App extends Component {
       cats: [],
       dogs: [],
       computers: [],
-      query: [],
+      query: '',
+      searchString: [],
       loading: true
     };
   
@@ -44,6 +45,13 @@ export default class App extends Component {
     //   this.performSearch(window.location.pathname.slice(8,20))
     // }
   }
+
+  //handles and stores user input for search query
+  handleUserInput = (userInput) => {
+    this.setState( { query: userInput}, () => this.performSearch(this.state.query));
+  }
+
+
 
   //api.flickr to www.flickr
   
@@ -70,11 +78,12 @@ export default class App extends Component {
       } else if (query){
         this.setState({
           query: response.data.photos.photo,
+          SearchString: query,
           loading: false
         })
       } else {
         this.setState({
-          images: response.data.photos.photo,
+          searchString: response.data.photos.photo,
           loading: false
         });
       }
@@ -91,7 +100,7 @@ export default class App extends Component {
           
             <div className="container">
               
-              <SearchForm onSearch={this.performSearch}/>
+              <SearchForm onSearch={this.handleUserInput}/>
               <Nav />
     
                 {/* Switch only renders the first route it matches */}
@@ -107,9 +116,9 @@ export default class App extends Component {
                 <Route path= "/cats" render={() => <PhotoContainer data={this.state.cats} title="Cat Images" alt="Cat Images"/>}/>
                 <Route path="/dogs" render={() => <PhotoContainer data={this.state.dogs} title="Dog Images" alt="Dog Images"/> }/>
                 <Route path="/computers" render={() => <PhotoContainer data={this.state.computers} title="Computer Images" alt="Computer Images"/> }/>
-                <Route exact path="/:query"  render={() => <PhotoContainer data={this.state.query} title="Your Images" alt={`${this.query} Images`}/> }/>
+                <Route exact path={`/${this.state.SearchString}`}  render={() => <PhotoContainer data={this.state.query} title="Your Images" alt={`${this.query} Images`}/> }/>
                 
-                <Route render={() => <NotFound/>}/>
+                <Route component={NotFound} />
                 </Switch>
     
             </div>
