@@ -111,12 +111,12 @@ export default class App extends Component {
                   ?<p>Loading...</p>
                   :  <Route exact path="/" render={() => <Redirect to="/cats"/>} />
                 }
-
+                <Route path={`/${this.state.SearchString}`}  render={() => <PhotoContainer data={this.state.query} title="Your Images" alt={`${this.query} Images`}/> }/>
 
                 <Route path= "/cats" render={() => <PhotoContainer data={this.state.cats} title="Cat Images" alt="Cat Images"/>}/>
                 <Route path="/dogs" render={() => <PhotoContainer data={this.state.dogs} title="Dog Images" alt="Dog Images"/> }/>
                 <Route path="/computers" render={() => <PhotoContainer data={this.state.computers} title="Computer Images" alt="Computer Images"/> }/>
-                <Route exact path={`/${this.state.SearchString}`}  render={() => <PhotoContainer data={this.state.query} title="Your Images" alt={`${this.query} Images`}/> }/>
+                
                 
                 <Route component={NotFound} />
                 </Switch>
