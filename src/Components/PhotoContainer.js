@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import NotFound from './NotFound';
 import Photo from './Photo';
 
 
-const PhotoContainer = (props) => {
-    
+export default class PhotoContainer extends React{
+    render(){
     const results = props.data;
     let photos;
 
@@ -17,22 +17,21 @@ const PhotoContainer = (props) => {
                     key={photo.id.toString()}
                 /> 
             );
-        } else  if(results.length ===  undefined){
-                    photos = <NotFound />
+        } else {
+                    photos = <NotFound />;
         }
         
        
     return  (
 
         <div className="photo-container">
-            <h2>{props.title}</h2>
-              <ul>
-                {photos}
-              </ul>
+            { this.props.loading   ? <h1>Loading...</h1> 
+                        : <h2>Photos found: "{props.title}"</h2>
+            }
+            {this.props.loading    ? '' 
+                        : <ul>{photos}</ul>
+            }
         </div>
     );
-    
+    }  
 } 
-
-
-export default PhotoContainer;

@@ -117,10 +117,10 @@ export default class App extends Component {
                 <Switch>
                 
                 {
-                  (this.state.loading)
+                  (this.state.loading
                   ? <p>Loading...</p>
                   :  <Route exact path="/" render={() => <Redirect to="/cats"/>} />
-                  
+                  )
                 }
                 <Route path={`/${this.state.SearchString}`}  render={() => <PhotoContainer data={this.state.query} alt={`${this.query} Images`}/> }/>
 
