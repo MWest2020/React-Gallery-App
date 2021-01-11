@@ -64,7 +64,7 @@ export default class RouteHandling extends Component {
       //       // Something happened in setting up the request and triggered an Error
       //       console.log('Error', error.message);
       //   }
-      //   console.log(error.config); 
+      //   console.log(error); 
       // })
     })
   }

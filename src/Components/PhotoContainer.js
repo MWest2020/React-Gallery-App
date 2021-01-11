@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import NotFound from './NotFound';
 import Photo from './Photo';
 
-
 export default class PhotoContainer extends Component{
     render(){
     const results = this.props.photos;
@@ -14,11 +13,12 @@ export default class PhotoContainer extends Component{
                 server={photo.server}
                 id={photo.id}
                 secret={photo.secret}
+                title={photo.title}
                 key={photo.id.toString()}
                 /> 
-            )
+            );
         } else {
-            photos = <NotFound/>;
+                    photos = <NotFound />;
         }
         
        
@@ -26,7 +26,7 @@ export default class PhotoContainer extends Component{
 
         <div className="photo-container">
             { this.props.loading   ? <h1>Loading...</h1> 
-                        : <h2>Photos found: "{this.props.title}"</h2>
+                : ''
             }
             {this.props.loading    ? '' 
                         : <ul>{photos}</ul>

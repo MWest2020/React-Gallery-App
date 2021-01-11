@@ -10,11 +10,13 @@ import {
 
 //App components
 import RouteHandling from './Components/RouteHandling';
-import PageNotFound from './Components/NotFound';
+import PageNotFound from './Components/PageNotFound';
 import Nav from './Components/Nav';
 import SearchForm from './Components/SearchForm';
 
 export default class App extends Component {
+
+  
   
     render() {
 
@@ -29,8 +31,9 @@ export default class App extends Component {
 
                   <Switch>
                 
-                    {/* <Route exact path="/" render={() => <Redirect to="/cats"/>} /> */}
-                    <Route path="/search/:query" component={RouteHandling}/>
+                    <Route exact path="/" render={() => <Redirect to="/search/random"/>} />
+                    <Route exact path="/search/" render={() => <Redirect to="/search/random"/>} />
+                    <Route exact path="/search/:query" component={RouteHandling}/>
                     <Route component={PageNotFound} />
                   </Switch>
                 </Router>
