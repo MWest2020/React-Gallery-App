@@ -17,21 +17,14 @@ export default class PhotoContainer extends Component{
                 key={photo.id.toString()}
                 /> 
             );
-        } else {
-                    photos = <NotFound />;
-        }
+    } else {  photos = <NotFound />; }
         
-       
     return  (
 
         <div className="photo-container">
-            { this.props.loading   ? <h1>Loading...</h1> 
-                : ''
-            }
-            {this.props.loading    ? '' 
-                        : <ul>{photos}</ul>
-            }
+            { !this.props.loading   ?  ''   :   <h1>Loading...</h1> }
+            { this.props.loading    ? ''    :   <ul>{photos}</ul>   }
         </div>
-    );
+        );
     }  
 } 

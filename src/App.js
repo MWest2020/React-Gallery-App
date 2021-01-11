@@ -16,16 +16,14 @@ import SearchForm from './Components/SearchForm';
 
 export default class App extends Component {
 
-  
-  
-    render() {
+  render() {
 
       return (
           
             <div className="container">
               
                 <Router>
-                  {/* Switch only renders the first route it matches */}
+                  
                   <Nav/>
                   <SearchForm/> 
 
